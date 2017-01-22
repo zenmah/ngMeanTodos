@@ -6,7 +6,7 @@
     "**/.hg": true,
     "**/.DS_Store": true,
     "app/**/.js*": true, 
-    "app/**/.spec.ts": true
+   // "app/**/.spec.ts": true
     
   },
   "files.autoSave": "afterDelay",
