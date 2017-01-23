@@ -3,17 +3,25 @@
   <div class="form-group">
     <input type="text" class="form-control input-lg" placeholder="Add Todo..." autofocus #todoText>
     <br>
-    <button class="btn btn-primary btn-block" (click)="createTodo()">Create</button>
+    <button class="btn btn-primary btn-block" (click)="addTodo($event, todoText)">Create</button>
   </div>
 </div>
 
 <div class="todo-list">
   <div class="row" *ngFor="let todo of todos">
-    <div class="col-md-1"><input type="checkbox" > {{todo.is_completed}}</div>
-    <div class="col-md-7"> {{todo.text}}</div>
+    <div class="col-md-1">
+      <!--<div class="checkbox">-->
+        <input type="checkbox" [checked]="todo.is_completed" (click)="updateStatus(todo)">
+      <!--</div>-->
+    </div>
+    <div class="col-md-7"> 
+      <span [class.hidden]="todo.isEditMode">{{todo.text}}</span>
+      <input type="text" [class.hidden]="!todo.isEditMode" [value]="todo.text" (keypress)="updateTodoText($event,todo)">
+      <input type="button" class="btn btn-danger" [class.hidden]="!todo.isEditMode" value="Cancel" (click)="setEditState(todo, false)">
+    </div>
     <div class="col-md-3">
-      <input type="button" class="btn btn-danger pull-right" value="Delete">
-      <input type="button" class="btn btn-info pull-right" value="Edit">
+      <input type="button" class="btn btn-danger pull-right" value="Delete" (click)=deleteTodo(todo) >
+      <input type="button" class="btn btn-info pull-right" value="Edit" [disabled]="todo.is_completed" [class.disabled]="todo.is_completed" (click)="setEditState(todo,true)">
     </div>
   </div>
 

@@ -5,11 +5,13 @@
     "**/.svn": true,
     "**/.hg": true,
     "**/.DS_Store": true,
-    "app/**/.js*": true, 
+    "app/**/.js*": true
    // "app/**/.spec.ts": true
     
   },
-  "files.autoSave": "afterDelay",
-  "files.autoSaveDelay": 10000,
-"editor.autoClosingBrackets": true
+  "files.autoSave": "onWindowChange",
+"editor.autoClosingBrackets": true,
+"tslint.autoFixOnSave": true,
+"editor.insertSpaces": true,
+"editor.detectIndentation": false
 }
